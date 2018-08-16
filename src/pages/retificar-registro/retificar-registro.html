@@ -1,0 +1,42 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right >
+      <button ion-button (click)="validaForm()">Avançar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="retificarForm">
+    <form-errors [hidden]="!isSubmited" [formGroup]="retificarForm" [validationMessages]="validationMessages"></form-errors>
+    <ion-list>
+      <ion-item-group>
+        <ion-item-divider color="light"><p>DADOS DE AUTENTICAÇÃO</p></ion-item-divider>
+        <ion-item>
+          <ion-label>Protocolo</ion-label>
+          <ion-input type="text"
+                     (input)="onChangeMaskInput($event)"
+                     [class.invalidForm]="showInvalidClass('numeroDocumento')"
+                     [textMask]="{mask: protocoloMask, guide: false, modelClean: true}"
+                     maxlength="19"
+                     text-uppercase
+                     placeholder="Digite o número do PROTOCOLO"
+                     formControlName="numeroDocumento"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Placa</ion-label>
+          <ion-input type="text"
+                     (input)="onChangeMaskInput($event)"
+                     [textMask]="{mask: placaMask, guide: false, modelClean: true}"
+                     maxlength="8"
+                     text-uppercase
+                     placeholder="Digite a PLACA do veículo"
+                     formControlName="placa"></ion-input>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </form>
+</ion-content>

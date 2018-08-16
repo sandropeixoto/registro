@@ -1,0 +1,12 @@
+condutor-form{
+    .error{
+    background-color:lightcoral;
+    padding: 0.1em;
+    height: 2.5em;
+    border-bottom: 1px solid lightgray;
+  }
+  .error p{
+    color: black;
+    font-size: 0.7em;
+  }
+}

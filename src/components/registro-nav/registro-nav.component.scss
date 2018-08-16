@@ -1,0 +1,24 @@
+registro-nav-component{
+
+  ion-row{
+    color:green;
+    font-size: x-small;
+    border: 1px solid;
+    border-radius: 35px;
+    overflow: hidden;
+  }
+
+  ion-col{
+   border-right: 1px solid;
+  }
+
+  ion-col:last-child {
+    border-right: none;
+  }
+
+  ion-col.active{
+    color: white;
+    background-color: #004d00;
+  }
+
+}

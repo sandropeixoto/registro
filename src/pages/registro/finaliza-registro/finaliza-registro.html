@@ -1,0 +1,26 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right >
+      <button [hidden]="!confirmaCheckbox" ion-button (click)="validaForm()">Concluir
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <registro-nav-component [index]="5"></registro-nav-component>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light"><p>CONFIRMAÇÃO</p></ion-item-divider>
+      <ion-item text-wrap>
+        <ion-checkbox padding [(ngModel)]="confirmaCheckbox"></ion-checkbox>
+        <ion-label text-left>
+            Confirmo e me responsabilizo pela veracidade dos dados desta declaração, podendo sofrer sanções penais/administrativas
+            diante de informações falsas.
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

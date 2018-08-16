@@ -1,0 +1,19 @@
+fotos-veiculo-component {
+
+  .title{
+    font-size: 1.1em;
+  }
+  img{
+    max-height: 80px;
+    max-width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  ion-row{
+    flex-wrap: wrap;
+  }
+  ion-row ion-col:last-child{
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}

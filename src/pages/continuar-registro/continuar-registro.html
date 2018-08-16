@@ -1,0 +1,33 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right >
+      <button ion-button (click)="validaForm()">Avançar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="list-background">
+  <div class="message background" [hidden]="!hiddenList">
+    <p text-center>Não existem registros disponíveis, por favor <br>
+      inicie um novo registro na página inicial. <br>
+    </p>
+  </div>
+  <div [hidden]="hiddenList">
+    <ion-list >
+      <ion-item-group>
+        <ion-item-divider color="light"><p>CONTINUAR REGISTRO</p></ion-item-divider>
+        <ion-item text-wrap class="list">
+            <h2 text-center>Protocolo: {{protocolo}}</h2>
+            <p text-center>Clique em avançar para continuar este registro.</p>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+
+</ion-footer>

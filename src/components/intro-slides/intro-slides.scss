@@ -1,0 +1,35 @@
+
+intro-slides {
+
+  ion-slide {
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+  }
+  ion-slide p{
+    font-size: small;
+  }
+  .title{
+    font-size: medium;
+  }
+  ion-slide ion-row:first-child{
+    margin-top: 70%;
+  }
+
+  button{
+    width: 50%;
+  }
+  .btn-slide-1{
+    background-color:red;
+  }
+  
+  .btn-slide-2 {
+    background-color:goldenrod;
+  }
+  
+  .btn-slide-3 {
+    background-color:green;
+  }
+}
+
+

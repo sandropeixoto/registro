@@ -1,0 +1,73 @@
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <ion-title>
+      Registro de acidente
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="fundo">
+
+  <ion-grid>
+    <ion-row>
+
+      <div responsive padding class="box">
+        <p text-center class="build-text">BUILD - 
+          <strong>{{ versionNumber }}</strong>
+        </p>
+        <img src="assets/car_crash_home.png">
+        <h2 text-center>Registro de Acidente
+          <br>Sem Vítimas</h2>
+        <p text-center> Você está prestes a iniciar o registro de acidente sem vítimas, siga todos os passos a seguir para que possa concluir
+          com sucesso o seu registro.
+          <br> Esta declaração estará sujeita à conferência para posterior liberação.
+          <br> Você será informado do resultado da sua declaração por e-mail.</p>
+      </div>
+    </ion-row>
+    <ion-row>
+      <button ion-button (click)="iniciarRegistro()" full round color="secondary">Iniciar Registro</button>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-33>
+        <button (click)="iniciarRegistro()">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <br>
+          <span text-center>Iniciar</span>
+        </button>
+      </ion-col>
+      <ion-col width-33>
+        <button [navPush]="continuarRegistroPage">
+          <ion-icon name="arrow-dropright"></ion-icon>
+          <br>
+          <span text-center>Continuar</span>
+        </button>
+      </ion-col>
+      <!-- <ion-col width-20>
+        <button [navPush]="autenticarRegistroPage">
+          <ion-icon name="ios-paper-outline"></ion-icon>
+          <br>
+          <span text-center>Autenticar</span>
+        </button>
+      </ion-col>
+      <ion-col width-20>
+        <button [navPush]="retificarRegistroPage">
+          <ion-icon name="ios-sync-outline"></ion-icon>
+          <br>
+          <span text-center>Retificar</span>
+        </button>
+      </ion-col> -->
+      <ion-col width-33>
+        <button [navPush]="faqPage">
+          <ion-icon name="ios-information-circle-outline"></ion-icon>
+          <br>
+          <span text-center>FAQ</span>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

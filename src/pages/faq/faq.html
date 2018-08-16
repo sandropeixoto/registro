@@ -1,0 +1,20 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list text-wrap>
+      <ion-item-group>
+        <ion-item-divider padding-top color="light"><p>TIRE SUAS DÚVIDAS</p></ion-item-divider>
+        <button
+          ion-item
+          *ngFor="let faq of faqList"
+          [navPush]="faqItemPage" [navParams]="faq">
+          <h2>{{faq.pergunta}}</h2>
+        </button>
+      </ion-item-group>
+    </ion-list>
+  {{data | json}}
+</ion-content>

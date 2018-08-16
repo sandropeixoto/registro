@@ -1,0 +1,8 @@
+<ion-grid padding>
+  <ion-row text-center>
+    <ion-col width-20 *ngFor="let i of [1,2,3,4,5]" 
+    [class.active]="index==i" >
+      {{ i }}
+      </ion-col>
+  </ion-row>
+</ion-grid>

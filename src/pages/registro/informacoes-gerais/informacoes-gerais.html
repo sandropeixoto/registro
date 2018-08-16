@@ -1,0 +1,23 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right >
+      <button ion-button (click)="validaForm()">Avançar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <registro-nav-component [index]="1"></registro-nav-component>
+  <form [formGroup]="registroForm">
+
+    <ion-list text-wrap>
+      <declarante-form [parentController]="registroForm" [isSubmited]="isSubmited"></declarante-form>
+      <dados-acidente-form [parentController]="registroForm" [isSubmited]="isSubmited"></dados-acidente-form>
+    </ion-list>
+  </form>
+
+</ion-content>

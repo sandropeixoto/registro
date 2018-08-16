@@ -1,0 +1,25 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right >
+      <button ion-button (click)="validaForm()">Avançar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item-group>
+        <ion-item-divider color="light"><p>SUAS INFORMAÇÕES</p></ion-item-divider>
+
+        <ion-item text-wrap *ngFor="let item of informacoesGeraisForm">
+          <ion-label><p>{{item.question}}</p></ion-label>
+          <ion-toggle [(ngModel)]="item.selectedValue"></ion-toggle>
+        </ion-item>
+
+      </ion-item-group>
+    </ion-list>
+
+</ion-content>

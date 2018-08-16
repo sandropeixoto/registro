@@ -1,0 +1,151 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="validaForm()">Avançar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <registro-nav-component [index]="2"></registro-nav-component>
+
+  <form [formGroup]="veiculoForm">
+    <form-errors [hidden]="!isSubmited" [formGroup]="veiculoForm" [validationMessages]="validationMessages"></form-errors>
+
+    <ion-list text-wrap>
+      <ion-item-group>
+        <ion-item-divider color="light"><p>VEÍCULO PRINCIPAL</p></ion-item-divider>
+        <ion-item>
+          <ion-label>Situação</ion-label>
+          <ion-select formControlName="situacao" cancelText="Cancelar">
+            <ion-option *ngFor="let item of situacaoVeiculo" [value]="item.key">{{item.value}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Placa</ion-label>
+          <ion-input formControlName="placa" text-uppercase
+                     (input)="onChangeMaskInput($event)"
+                     [textMask]="{mask: placaMask, guide: false, modelClean: true}"
+                     maxlength="8"
+                     type="text" placeholder="Digite a placa do veículo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Renavam</ion-label>
+          <ion-input formControlName="renavam" type="tel" maxlength="11" placeholder="Digite o renavam do veículo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Tipo de veículo</ion-label>
+          <ion-select formControlName="tipoVeiculo" cancelText="Cancelar">
+            <ion-option *ngFor="let item of tipoVeiculo" [value]="item.key">{{item.value}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Chassi</ion-label>
+          <ion-input formControlName="chassi" type="text" maxlength="17" placeholder="Digite o chassi do veículo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>UF</ion-label>
+          <ion-select [disabled]="veiculoForm.get('situacao').value !='licenciado_outro_estado'" formControlName="uf" cancelText="Cancelar">
+        <ion-option *ngFor="let item of listaUf" [value]="item">{{item}}</ion-option>
+      </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cor</ion-label>
+          <ion-input formControlName="cor" type="text" placeholder="Digite a cor do veículo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Mar/Mod.</ion-label>
+          <ion-input formControlName="marcaModelo" type="text"
+                     placeholder="Digite a marca/modelo do veículo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Ano Mod.</ion-label>
+          <ion-input formControlName="anoModelo" maxlength="4" type="tel"
+                     placeholder="Digite o ano do modelo veículo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Ano Fab.</ion-label>
+          <ion-input formControlName="anoFabricacao" type="tel" maxlength="4"
+                     placeholder="Digite o ano de fabricação do veículo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Categoria</ion-label>
+          <ion-select formControlName="categoria" cancelText="Cancelar">
+            <ion-option *ngFor="let item of categoriaVeiculo" [value]="item.key">{{item.value}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>VEÍCULO SEGURADO?</p></ion-item-divider>
+        <ion-item>
+          <ion-label>Selecionar</ion-label>
+          <ion-select  formControlName="segurado" cancelText="Cancelar">
+            <ion-option value="sim">Sim</ion-option>
+            <ion-option value="nao">Não</ion-option>
+            <ion-option value="nao_sei">Não sei</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Seguradora</ion-label>
+          <ion-input formControlName="nomeSeguradora" type="text" placeholder="Digite o nome da seguradora"></ion-input>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>VEÍCULO ARTICULADO OU COM CARRETINHA?</p></ion-item-divider>
+        <ion-item>
+          <ion-label>Selecionar</ion-label>
+          <ion-select formControlName="reboques" cancelText="Cancelar">
+            <ion-option value="nao">Não</ion-option>
+            <ion-option value="um">Sim (uma)</ion-option>
+            <ion-option value="dois">Sim (duas)</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>MANOBRA DURANTE O ACIDENTE?</p></ion-item-divider>
+        <ion-item>
+          <ion-label>Selecionar</ion-label>
+          <ion-select formControlName="manobraDuranteAcidente" cancelText="Cancelar">
+            <ion-option *ngFor="let item of manobraAcidente" [value]="item.key">{{item.value}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>PROPRIETÁRIO</p></ion-item-divider>
+        <proprietario-form [parentController]="veiculoForm" [isSubmited]="isSubmited" [noValidate]="false"></proprietario-form>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>CONDUTOR</p></ion-item-divider>
+        <condutor-form [parentController]="veiculoForm" [isSubmited]="isSubmited" [noValidate]="false"></condutor-form>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>DANOS DO VEÍCULO PRINCIPAL</p></ion-item-divider>
+        <ion-item>
+          <ion-checkbox formControlName="danosSistemaDeSeguranca"></ion-checkbox>
+          <ion-label>Houve danos ao sistema de segurança, freios, direção ou suspensão do veículo?</ion-label>
+        </ion-item>
+      </ion-item-group>
+
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>FOTOS DO VEÍCULO PRINCIPAL</p></ion-item-divider>
+        <fotos-veiculo-component [parentController]="veiculoForm" [isSubmited]="isSubmited"></fotos-veiculo-component>
+      </ion-item-group>
+
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>DANOS NA CARGA</p></ion-item-divider>
+        <danos-carga-form [parentController]="veiculoForm" [isSubmited]="isSubmited"></danos-carga-form>
+      </ion-item-group>
+    </ion-list>
+  </form>
+</ion-content>

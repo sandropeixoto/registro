@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="validaForm()">Avançar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <registro-nav-component [index]="3"></registro-nav-component>
+
+  <div class="message background" [hidden]="!hiddenList">
+    <p text-center>Você pode adicionar outros veículos <br>
+      envolvidos no acidente sem vítimas. Será <br>
+      permitido inserir até 5 veículos.
+    </p>
+  </div>
+  <ion-list [hidden]="hiddenList">
+    <ion-list-header color="light">
+      <p>Outros veículos</p>
+    </ion-list-header>
+    <ion-item *ngFor="let item of outrosVeiculosList">
+      <label>{{item.placa}}</label>
+      <button ion-button outline item-right small (click)="editarVeiculo(item)">Editar</button>
+      <button ion-button outline color="danger" item-right small (click)="removerVeiculoSelecionado(item)">Remover</button>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+<ion-footer padding>
+  <div class="background">
+    <button ion-button round block (click)="adicionarVeiculo()">Adicionar Veículo</button>
+  </div>
+</ion-footer>

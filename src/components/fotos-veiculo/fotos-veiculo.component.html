@@ -1,0 +1,13 @@
+<ion-grid>
+  <form-errors [hidden]="!isSubmited" [formGroup]="imagemForm" [validationMessages]="validationMessages"></form-errors>
+  <ion-row [formGroup]="imagemForm">
+    <ion-col *ngFor="let item of items" width-50 (click)="takeFoto(item.key)">
+      <ion-card padding>
+        <img center [src]="imagemForm.get(item.key).value">
+        <p class="title" padding-top text-center>{{item.value}}</p>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+

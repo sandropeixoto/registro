@@ -1,0 +1,33 @@
+<div [formGroup]="endereco">
+  <form-errors [hidden]="!isSubmited" [formGroup]="endereco" [validationMessages]="validationMessages"></form-errors>
+<ion-item>
+  <ion-label>CEP</ion-label>
+  <ion-input formControlName="cep" type="tel" [textMask]="{mask: cepMask, guide: false, modelClean: true}" placeholder="CEP de sua residência"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Logradouro</ion-label>
+  <ion-input formControlName="logradouro" type="text" placeholder="Digite seu logradouro"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Número</ion-label>
+  <ion-input formControlName="numero" type="tel" placeholder="Número"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Complemento</ion-label>
+  <ion-input formControlName="complemento" type="text" placeholder="Complemento"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Bairro</ion-label>
+  <ion-input formControlName="bairro" type="text" placeholder="Bairro"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Cidade</ion-label>
+  <ion-input formControlName="cidade" type="text" placeholder="Cidade"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>UF</ion-label>
+  <ion-select formControlName="uf" cancelText="Cancelar">
+    <ion-option *ngFor="let item of listaUf" [value]="item">{{item}}</ion-option>
+  </ion-select>
+</ion-item>
+</div>

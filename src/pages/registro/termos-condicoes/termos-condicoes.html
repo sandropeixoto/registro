@@ -1,0 +1,32 @@
+<ion-header no-border>
+  <ion-navbar  color="primary">
+    <ion-title>Termos e Condições</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <p text-justify>
+    As informações prestadas serão utilizadas de maneira sigilosa para fins estatísticos e de estudos objetivando
+    a prevenção de acidentes e o reforço da segurança pública;</p>
+  <p text-justify >
+    O declarante é responsável pelas informações e pode sofrer sanções penais/administrativas diante de informações falsas;</p>
+  <p text-justify >
+    O RASV se propõe a registrar os casos de acidentes sem vítima, que não tenha envolvido veículo de transporte de produtos,
+  do qual houve avaria ao compartimento de carga a granel, derramamento ou vazamento do produto, nem veículos públicos
+  e que não tenham provocado dano ao meio ambiente ou ao patrimônio público;</p>
+  <p>
+    O declarante deve ter mais de 18 anos de idade ou ser emancipado;  </p>
+  <p>
+    Serão registrados o IP e a data de abertuda da declaração;  </p>
+  <p>
+    Somente será permitido o registro de acidentes com data inferior a 30 (trinta) dias corridos;  </p>
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-50><button ion-button outline (click)="goToHome()">Cancelar</button></ion-col>
+      <ion-col width-50><button right outline ion-button [navPush]="informacoesIniciaisPage">Li e Concordo</button></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-footer>

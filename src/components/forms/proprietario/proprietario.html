@@ -1,0 +1,22 @@
+<div [formGroup]="proprietarioForm">
+  <form-errors [hidden]="!isSubmited" [formGroup]="proprietarioForm" [validationMessages]="validationMessages"></form-errors>
+  <ion-item>
+    <ion-label>Nome</ion-label>
+    <ion-input formControlName="nome" type="text" placeholder="Nome do proprietário"></ion-input>
+  </ion-item>
+  <ion-item>
+    
+    <ion-label>
+      <div [hidden]="proprietarioForm.get('isCPF').value">CPF/<strong>CNPJ</strong></div>
+      <div [hidden]="!proprietarioForm.get('isCPF').value"><strong>CPF</strong>/CNPJ</div>
+    </ion-label>
+    <ion-input formControlName="cpfOuCnpj" type="tel"
+               [textMask]="{mask: generalMask, guide: false, modelClean: true}"
+               maxlength="18"
+               placeholder="Digite o cpf ou cnpj"></ion-input>
+  </ion-item>
+  <ion-item-group>
+    <ion-item-divider color="light"><p>ENDEREÇO</p></ion-item-divider>
+    <endereco-form [parentController]="proprietarioForm" [isSubmited]="isSubmited" [noValidate]="isPassageiro"></endereco-form>
+  </ion-item-group>
+</div>

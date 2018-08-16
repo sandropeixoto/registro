@@ -1,0 +1,132 @@
+<form [formGroup]="veiculoForm">
+  <ion-list text-wrap>
+    <button ion-button (click)="viewCtrl.dismiss()">Modal leave</button>
+    <ion-item-group>
+      <ion-item-divider color="light"><p>VEÍCULO PRINCIPAL</p></ion-item-divider>
+      <ion-item>
+        <ion-label>Situação</ion-label>
+        <ion-select formControlName="situacao">
+          <ion-option *ngFor="let item of situacaoVeiculo" value="item.key">{{item.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Placa</ion-label>
+        <ion-input formControlName="placa" type="tel"
+                   [textMask]="{mask: placaMask}"
+                   placeholder="digite a placa do veículo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Renavam</ion-label>
+        <ion-input formControlName="renavam" type="text" placeholder="digite o renavam do veículo"></ion-input>
+      </ion-item>
+
+      <!--<ion-item> DESABILITADO - BUSCAR NA API
+        <ion-label>Tipo de veículo</ion-label>
+        <ion-select formControlName="tipoVeiculo">
+          <ion-option *ngFor="let item of tipoVeiculo" value="{{item.key}}">{{item.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Chassi</ion-label>
+        <ion-input formControlName="chassi" type="text" placeholder="digite o chassi do veículo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>UF</ion-label>
+        <ion-input formControlName="uf" placeholder="digite a uf do veículo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cor</ion-label>
+        <ion-input formControlName="cor" type="text" placeholder="digite a cor do veículo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mar/Mod.</ion-label>
+        <ion-input formControlName="marcaModelo" type="text"
+                   placeholder="digite a marca/modelo do veículo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ano Mod.</ion-label>
+        <ion-input formControlName="anoModelo" type="text" placeholder="digite o ano/modelo do veículo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ano Fab.</ion-label>
+        <ion-input formControlName="anoFabricacao" type="text"
+                   placeholder="digite o ano/fabricacao do veículo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select formControlName="categoria">
+          <ion-option *ngFor="let item of categoriaVeiculo" value="{{item.key}}">{{item.value}}</ion-option>
+        </ion-select>
+      </ion-item>-->
+    </ion-item-group>
+
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>VEÍCULO SEGURADO?</p></ion-item-divider>
+      <ion-item>
+        <ion-label>Selecionar</ion-label>
+        <ion-select  formControlName="segurado">
+          <ion-option value="sim">Sim</ion-option>
+          <ion-option value="nao">Não</ion-option>
+          <ion-option value="nao_sei">Não sei</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Seguradora</ion-label>
+        <ion-input formControlName="nomeSeguradora" type="text" placeholder="digite o nome da seguradora"></ion-input>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>VEÍCULO ARTICULADO OU COM CARRETINHA?</p></ion-item-divider>
+      <ion-item>
+        <ion-label>Selecionar</ion-label>
+        <ion-select formControlName="reboques">
+          <ion-option value="nao">Não</ion-option>
+          <ion-option value="um">Sim (uma)</ion-option>
+          <ion-option value="dois">Sim (duas)</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>MANOBRA DURANTE O ACIDENTE?</p></ion-item-divider>
+      <ion-item>
+        <ion-label>Selecionar</ion-label>
+        <ion-select formControlName="manobraDuranteAcidente">
+          <ion-option *ngFor="let item of manobraAcidente" value="{{item.key}}">{{item.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>PROPRIETÁRIO</p></ion-item-divider>
+      <proprietario-form [parentController]="veiculoForm"></proprietario-form>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>CONDUTOR</p></ion-item-divider>
+      <condutor-form [parentController]="veiculoForm"></condutor-form>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>DANOS AO VEÍCULO</p></ion-item-divider>
+      <ion-item>
+        <ion-checkbox formControlName="danosSistemaDeSeguranca"></ion-checkbox>
+        <ion-label>Houve danos ao sistema de segurança, freios, direção ou suspensão do veículo?</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>FOTOS DO VEÍCULO</p></ion-item-divider>
+      <fotos-veiculo-component [parentController]="veiculoForm"></fotos-veiculo-component>
+    </ion-item-group>
+
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>DANOS NA CARGA</p></ion-item-divider>
+      <danos-carga-form [parentController]="veiculoForm"></danos-carga-form>
+    </ion-item-group>
+  </ion-list>
+</form>

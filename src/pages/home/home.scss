@@ -1,0 +1,46 @@
+page-home {
+  .build-text{
+    font-size: 1em;
+    color: white;
+    padding: 0;
+  }
+  ion-footer {
+    background-color: #004d00;
+  }
+  ion-footer button {
+    color: white;
+    background-color: #004d00;
+  }
+  ion-footer button span {
+    font-size: x-small;
+  }
+
+  ion-footer ion-icon {
+    font-size: xx-large;
+  }
+  ion-content button {
+    font-size: 10px;
+  }
+  .fundo {
+    background-color: #0d860d;
+  }
+
+  ion-grid {
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .box {
+    background-color: #0E3C09;
+    border-radius: 35px;
+    color: white;
+    font-size: small;
+  }
+
+  .box img {
+    display: table;
+    margin: 0 auto;
+  }
+}
+
+

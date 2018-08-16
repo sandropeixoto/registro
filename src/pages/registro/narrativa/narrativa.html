@@ -1,0 +1,102 @@
+<ion-header no-border>
+  <ion-navbar class="nav" color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons right>
+      <button ion-button (click)="validaForm()">Avançar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <registro-nav-component [index]="4"></registro-nav-component>
+
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light"><p>NARRATIVA</p></ion-item-divider>
+      <ion-item text-wrap>
+        <ion-label>
+          <p>
+            Na guia abaixo você pode conferir a narrativa padrão gerada pelo sistema, contendo as principais
+            informações referentes a sua declaração.
+            Você deve conferi-los e selecionar a opção "Voltar" caso precise corrigir alguma informação.
+          </p>
+          <p>
+            Também será possível informar outros dados referentes ao acidente na guia "Informações Complementares",
+            lembrando que o declarante
+            é responsável pelas informações e pode sofrer sanções penais/administrativas diante de informações falsas
+            ou do uso de palavras de
+            baixo calçao e que comprometam a integridade da informação.
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>NARRATIVA GERADA PELO SISTEMA</p></ion-item-divider>
+      <ion-item text-wrap>
+        <ion-label>
+          <p>
+            Declaro para os fins de direito, advertido das penas de lei, na qualidade de <strong>{{tipoDeclarante}}</strong>,
+            que na data de <strong>{{dataAcidente | date:'dd/MM/yy' }}</strong>, às
+            <strong>{{dataAcidente | date:'HH:mm' }}</strong>, no endereço
+            <strong>PA {{registro.dadosAcidente.via}}, KM {{registro.dadosAcidente.km}},
+              Trecho {{registro.dadosAcidente.trecho}}, Belém-PA</strong>, o veículo
+            de placa {{veiculo.placa}} declarado por {{registro.declarante.nome}},
+            CPF <strong>{{registro.declarante.cpf}}</strong>, envolveu-se em um <strong>acidente sem vítima</strong>
+            do tipo <strong>{{tipoAcidente}}</strong>.
+            No momento do acidente seu veículo <strong>{{manobraDuranteAcidente}}</strong>.
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+    <div [formGroup]="narrativaForm">
+      <ion-item-group>
+        <form-errors [hidden]="!isSubmited" [formGroup]="narrativaForm"
+                     [validationMessages]="validationMessages"></form-errors>
+        <ion-item-divider color="light"><p>DESCRIÇÃO PATRIMÔNIO</p></ion-item-divider>
+
+        <ion-item text-wrap>
+          <ion-toggle formControlName="descPatrimonioToggle"></ion-toggle>
+          <ion-label><p>Houve danos ao patrimônio da união (placa de sinalização, viaduto, passarela, obras, poste, meio
+            fio,
+            asfalto...)?</p></ion-label>
+        </ion-item>
+        <ion-item [hidden]="!narrativaForm.controls['descPatrimonioToggle'].value" text-wrap>
+          <ion-textarea formControlName="descricaoPatrimonio" rows="6" maxlength="500"
+                        placeholder="Descreva os danos ao patrimônio"></ion-textarea>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>DESCRIÇÃO MEIO AMBIENTE</p></ion-item-divider>
+        <ion-item text-wrap>
+          <ion-toggle formControlName="descAmbienteToggle"></ion-toggle>
+          <ion-label><p>Houve danos ao meio ambiente (contaminação de mananciais hídricos, incêndio florestal...):</p>
+          </ion-label>
+        </ion-item>
+        <ion-item [hidden]="!narrativaForm.controls['descAmbienteToggle'].value" text-wrap>
+          <ion-textarea formControlName="descricaoMeioAmbiente" rows="6" maxlength="500"
+                        placeholder="Descreva os danos ao meio ambiente"></ion-textarea>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="light"><p>DESCRIÇÃO COMPLEMENTAR</p></ion-item-divider>
+        <ion-item text-wrap>
+          <ion-toggle formControlName="descComplementarToggle"></ion-toggle>
+          <ion-label>
+            <p>Informações complementares (Utilize esse campo caso deseje adicionar informações relevantes que não
+              estão inseridas na narrativa acima).</p>
+          </ion-label>
+        </ion-item>
+        <ion-item [hidden]="!narrativaForm.controls['descComplementarToggle'].value" text-wrap>
+          <ion-textarea formControlName="descricaoComplementar" rows="6" maxlength="500"
+                        placeholder="Descreva aqui"></ion-textarea>
+        </ion-item>
+      </ion-item-group>
+    </div>
+  </ion-list>
+
+</ion-content>

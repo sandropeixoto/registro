@@ -1,0 +1,60 @@
+
+<div [formGroup]="condutorForm">
+  <form-errors [hidden]="!isSubmited" [formGroup]="condutorForm" [validationMessages]="validationMessages"></form-errors>
+  <ion-item>
+  <ion-label>Não Habilitado?</ion-label>
+  <ion-toggle formControlName="naoHabilitado"></ion-toggle>
+  </ion-item>
+  <div [hidden]="condutorForm.controls['naoHabilitado'].value">
+    <ion-item>
+      <ion-label>Data de Nascimento</ion-label>
+      <ion-datetime formControlName="dataNascimento"
+                    cancelText="Cancelar"
+                    doneText="Ok"
+                    displayFormat="DD/MM/YYYY"
+                    pickerFormat="DD/MM/YYYY">
+      </ion-datetime>
+      
+    </ion-item>   
+    
+    <ion-item>
+      <ion-label>Registro da CNH</ion-label>
+      <ion-input formControlName="numeroRegistro" type="tel" maxlength="11"
+                 placeholder="Digite o registro da habilitação"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>UF da CNH</ion-label>
+      <ion-select formControlName="ufCNH" cancelText="Cancelar">
+        <ion-option *ngFor="let item of listaUf" [value]="item">{{item}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoria da CNH</ion-label>
+      <ion-select formControlName="categoriaCNH" cancelText="Cancelar">
+        <ion-option *ngFor="let item of categoriaCnh" [value]="item.key">{{item.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+
+      <ion-label>Data 1º Habilitação</ion-label>
+      <ion-datetime formControlName="dataPrimeiraCNH"
+                    cancelText="Cancelar"
+                    doneText="Ok"
+                    displayFormat="DD/MM/YYYY"
+                    pickerFormat="DD/MM/YYYY">
+      </ion-datetime>
+      
+    </ion-item>
+    <ion-item>
+      <ion-label>Validade</ion-label>
+      <ion-datetime formControlName="validadeCNH"
+                    max="2050-12-31"
+                    min="1950-01-01"
+                    cancelText="Cancelar"
+                    doneText="Ok"
+                    displayFormat="DD/MM/YYYY"
+                    pickerFormat="DD MM YYYY">
+      </ion-datetime>      
+    </ion-item>
+  </div>
+</div>

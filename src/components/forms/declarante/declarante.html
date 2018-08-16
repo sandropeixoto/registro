@@ -1,0 +1,104 @@
+<div [formGroup]="declarante">
+
+  <ion-item-group>
+    <ion-item-divider color="light"><p>DECLARANTE</p></ion-item-divider>
+    <form-errors [hidden]="!isSubmited" [formGroup]="declarante"
+                 [validationMessages]="validationMessages"></form-errors>
+    <ion-item>
+      <ion-label>Selecionar</ion-label>
+      <ion-select formControlName="tipo" cancelText="Cancelar">
+        <ion-option *ngFor="let item of tipoDeclarante" value="{{item.key}}">{{item.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="light"><p>EM CASO DE ESTRANGEIRO</p></ion-item-divider>
+    <ion-item>
+      <ion-label>Estrangeiro</ion-label>
+      <ion-toggle formControlName="estrangeiro"></ion-toggle>
+    </ion-item>
+    <!-- Se o botão estrangeiro for selecionado, mostrar esta DIV -->
+    <div [hidden]="!declarante.controls['estrangeiro'].value">      
+      <ion-item>
+        <ion-label>Tipo de documento</ion-label>
+        <ion-select formControlName="tipoDocumentoEstrangeiro" cancelText="Cancelar">
+          <ion-option *ngFor="let item of tipoDocumento" value="{{item.key}}">{{item.value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Número</ion-label>
+        <ion-input formControlName="numeroDocumentoEstrangeiro" type="text" placeholder="Digite o número do documento"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>País</ion-label>
+        <ion-input formControlName="paisEstrangeiro"
+         maxlength="254"
+         type="text" placeholder="Digite o País"></ion-input>
+      </ion-item>
+    </div>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="light"><p>NOME E CPF DO {{declarante.get('tipo').value =='corretor'? 'PROPRIETÁRIO':'DECLARANTE'}}</p></ion-item-divider>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input formControlName="nome" type="text" placeholder="Digite o nome completo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>CPF</ion-label>
+      <ion-input formControlName="cpf"
+                 [textMask]="{mask: cpfMask, guide: false, modelClean: true}"
+                 maxlength="14"
+                 type="tel" placeholder="Digite seu CPF"></ion-input>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="light"><p>SEXO</p></ion-item-divider>
+    <ion-item>
+      <ion-label>Selecionar</ion-label>
+      <ion-select formControlName="sexo" cancelText="Cancelar">
+        <ion-option value="masculino">Masculino</ion-option>
+        <ion-option value="feminino">Feminino</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="light">
+      <p>DADOS PESSOAIS {{declarante.get('tipo').value =='corretor'? 'PROPRIETÁRIO':'DECLARANTE'}}</p>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Profissão</ion-label>
+      <ion-input formControlName="profissao" type="text" placeholder="Digite sua profissão"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data de Nascimento</ion-label>
+      <ion-datetime formControlName="dataNascimento"
+                    cancelText="Cancelar"
+                    doneText="Ok"
+                    displayFormat="DD/MM/YYYY"
+                    pickerFormat="DD/MM/YYYY">
+      </ion-datetime>
+      <ion-datetime [hidden]="true" formControlName="dataNascimento"                    
+                    pickerFormat="HH">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input formControlName="email" type="email" placeholder="Digite seu e-mail"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Celular</ion-label>
+      <ion-input formControlName="celular"
+                 [textMask]="{mask: telefoneMask, guide: false, modelClean: true}"
+                 max="15"
+                 type="tel" placeholder="(DD)-99999-9999"></ion-input>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-item-divider color="light"><p>ENDEREÇO DO {{declarante.get('tipo').value =='corretor'? 'PROPRIETÁRIO':'DECLARANTE'}}</p></ion-item-divider>
+    <endereco-form [parentController]="declarante" [isSubmited]="isSubmited"></endereco-form>
+  </ion-item-group>
+</div>

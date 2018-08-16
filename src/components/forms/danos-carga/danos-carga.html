@@ -1,0 +1,42 @@
+<div [formGroup]="danosCargaForm">
+  <form-errors [hidden]="!isSubmited" [formGroup]="danosCargaForm" [validationMessages]="validationMessages"></form-errors>
+  
+  <ion-item>
+    <ion-label>Houve danos na carga?</ion-label>
+    <ion-toggle formControlName="danosNaCarga"></ion-toggle>
+  </ion-item>
+
+  <div [hidden]="!danosCargaForm.controls['danosNaCarga'].value">
+    <ion-item>
+      <ion-label>Nota Fiscal</ion-label>
+      <ion-input formControlName="notasFiscaisCarga" type="tel" placeholder="Nota fiscal ou similar"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Carga</ion-label>
+      <ion-input formControlName="tipoMercadoriaCarga" type="text"
+                 placeholder="Tipo de mercadoria da carga"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Valor</ion-label>
+      <ion-input formControlName="valorTotalCarga" type="tel" placeholder="Valor da carga danificada"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Extensão estimada danos da carga</ion-label>
+      <ion-select formControlName="estimativasDanosCarga" cancelText="Cancelar">
+        <ion-option *ngFor="let item of estimativaDanoCarga" value="{{item.key}}">{{item.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider color="light"><p>SEGURO</p></ion-item-divider>
+      <ion-item>
+        <ion-toggle formControlName="possuiSeguroCarga"></ion-toggle>
+        <ion-label>Possui seguro?</ion-label>
+      </ion-item>
+      <ion-item [hidden]="!danosCargaForm.controls['possuiSeguroCarga'].value">
+        <ion-label>Seguradora da Carga</ion-label>
+        <ion-input formControlName="seguradoraCarga" type="text" placeholder="Informe a seguradora"></ion-input>
+      </ion-item>
+    </ion-item-group>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<ion-slides pager="true">
+
+  <ion-slide style="background: url('assets/slides/Walk-1.png') no-repeat center white">
+    <ion-row padding>
+      <ion-col>
+        <p class="title">
+          <strong>Registro de Acidente de Trânsito</strong>
+        </p>
+        <p>Em caso de colisões, simples e sem vítimas, você poderá usar o aplicativo para registrar o seu acidente de trânsito.</p>
+      </ion-col>
+    </ion-row>
+    <ion-row padding-top>
+      <ion-col>
+        <button class="btn-slide-1" padding round ion-button (click)="slides.slideNext(300)">Avançar</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+
+  <ion-slide style="background: url('assets/slides/Walk-2.png') no-repeat center white">
+    <ion-row padding>
+      <ion-col>
+        <p class="title">
+          <strong>Tudo na palma da sua mão</strong>
+        </p>
+        <p>Com poucos passos você faz o seu registro de acidente sem vítima, substituindo o elaborado pessoalmente pelo agente
+          de trânsito. Você ganha tempo, pois não precisa aguardar a perícia.</p>
+      </ion-col>
+    </ion-row>
+    <ion-row padding-top>
+      <ion-col>
+        <button class="btn-slide-2" padding round ion-button (click)="slides.slideNext(300)">Avançar</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+
+  <ion-slide style="background: url('assets/slides/Walk-3.png') no-repeat center white">
+    <ion-row padding>
+      <ion-col>
+        <p class="title">
+          <strong>Protocolo enviado para o E-mail</strong>
+        </p>
+        <p>Você receberá o protocolo do seu registro no seu e-mail cadastrado com as instruções para retirar o laudo da perícia.
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row padding-top>
+      <ion-col>
+        <button class="btn-slide-3" padding round ion-button (click)="goToHome()">Avançar</button>
+      </ion-col>
+    </ion-row>
+  </ion-slide>
+</ion-slides>

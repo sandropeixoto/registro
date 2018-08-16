@@ -1,0 +1,86 @@
+<div [formGroup]="dadosAcidente">
+<ion-item-group>
+  <ion-item-divider color="light"><p>QUANDO FOI O ACIDENTE</p></ion-item-divider>
+  <form-errors [hidden]="!isSubmited" [formGroup]="dadosAcidente" [validationMessages]="validationMessages"></form-errors>
+  <ion-item>
+    <ion-label>Data do acidente</ion-label>
+    <ion-datetime formControlName="dataAcidente"
+    cancelText="Cancelar"
+                    doneText="Ok"
+      displayFormat="DD/MM/YYYY"
+      pickerFormat="DD MM YYYY"
+      [max]="dataHoje"
+      [min]="dataMin">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Hora do acidente</ion-label>
+    <ion-datetime formControlName="dataAcidente"
+                  cancelText="Cancelar"
+                  doneText="Ok"
+                  cancelText="Cancelar"
+                  doneText="Ok"
+                  displayFormat="HH:mm"
+                  pickerFormat="HH:mm">
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>UF</ion-label>
+    <ion-input type="text" max="2" disabled="true" text-uppercase placeholder="UF do acidente" value="PA"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Cidade</ion-label>
+    <ion-input disabled="true" type="text" placeholder="Cidade do acidente" value="Belém"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>PA</ion-label>
+    <ion-input formControlName="rodovia" type="tel" placeholder="Número da rodovia"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>KM</ion-label>
+    <ion-input formControlName="km" type="tel" placeholder="KM do acidente"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Local do acidente</ion-label>
+    <ion-input formControlName="trecho" type="text" placeholder="Local do acidente"></ion-input>
+  </ion-item>
+</ion-item-group>
+
+<ion-item-group>
+  <ion-item-divider color="light"><p>CONDIÇÕES DO LOCAL</p></ion-item-divider>
+  <ion-item>
+    <ion-label>Condições da pista</ion-label>
+    <ion-select formControlName="condicaoPista" cancelText="Cancelar">
+      <ion-option *ngFor="let item of condicoesPista" value="{{item.key}}">{{item.value}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item >
+    <ion-label>Traçado do Local</ion-label>
+    <ion-select formControlName="tracadoRodovia" cancelText="Cancelar">
+      <ion-option *ngFor="let item of tracadoRodovia" value="{{item.key}}">{{item.value}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item >
+    <ion-label>Sinalização Horizontal e Vertical (Pinturas e placas na pista)</ion-label>
+    <ion-select formControlName="condicaoSinalizacao" cancelText="Cancelar">
+      <ion-option *ngFor="let item of condicaoSinalizacao" value="{{item.key}}">{{item.value}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item >
+    <ion-label>Condições Meteorológicas</ion-label>
+    <ion-select formControlName="condicoesMeteorologicas" cancelText="Cancelar">
+      <ion-option *ngFor="let item of condicoesMeteorologicas" value="{{item.key}}">{{item.value}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-item-group>
+
+<ion-item-group>
+  <ion-item-divider color="light"><p>TIPO DE ACIDENTE</p></ion-item-divider>
+  <ion-item>
+    <ion-label>Selecionar</ion-label>
+    <ion-select formControlName="tipoAcidente" cancelText="Cancelar">
+      <ion-option *ngFor="let item of acidentesTipo" value="{{item.key}}">{{item.value}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-item-group>
+</div>
